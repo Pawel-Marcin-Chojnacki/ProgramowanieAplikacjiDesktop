@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Instalator\Instalator.vdproj", "{62CEAF85-DD9F-4ADC-A815-EF8FD5445822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMap", "OpenWeatherMap\OpenWeatherMap.csproj", "{4194E347-B542-4565-9F8E-6D534DB74599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forecast Collector", "Forecast Collector\Forecast Collector.csproj", "{993E3A81-315F-4B1B-B001-4B679C1CC1E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forecast Collector Tests", "Forecast Collector Tests\Forecast Collector Tests.csproj", "{2012A0FE-962B-4A62-A26A-36BC3F9DD15E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather Charts Tests", "Weather Charts Tests\Weather Charts Tests.csproj", "{9F10777E-9D1D-40C0-93B4-D904958F911A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather Charts", "Weather Charts\Weather Charts.csproj", "{61BA9093-1ED7-4329-9557-C5063BF983CE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{0BA40BD8-CC2E-42E7-B444-7407B4338256}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseManager", "DatabaseManager\DatabaseManager.csproj", "{10B07200-E21B-4719-BADA-80579669AF3C}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Common\Common.projitems*{0ba40bd8-cc2e-42e7-b444-7407b4338256}*SharedItemsImports = 13
+		Common\Common.projitems*{10b07200-e21b-4719-bada-80579669af3c}*SharedItemsImports = 4
+		Common\Common.projitems*{4194e347-b542-4565-9f8e-6d534db74599}*SharedItemsImports = 4
+		Common\Common.projitems*{61ba9093-1ed7-4329-9557-c5063bf983ce}*SharedItemsImports = 4
+		Common\Common.projitems*{993e3a81-315f-4b1b-b001-4b679c1cc1e9}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62CEAF85-DD9F-4ADC-A815-EF8FD5445822}.Debug|Any CPU.ActiveCfg = Debug
+		{62CEAF85-DD9F-4ADC-A815-EF8FD5445822}.Release|Any CPU.ActiveCfg = Release
+		{4194E347-B542-4565-9F8E-6D534DB74599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4194E347-B542-4565-9F8E-6D534DB74599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4194E347-B542-4565-9F8E-6D534DB74599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4194E347-B542-4565-9F8E-6D534DB74599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{993E3A81-315F-4B1B-B001-4B679C1CC1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993E3A81-315F-4B1B-B001-4B679C1CC1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993E3A81-315F-4B1B-B001-4B679C1CC1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993E3A81-315F-4B1B-B001-4B679C1CC1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2012A0FE-962B-4A62-A26A-36BC3F9DD15E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2012A0FE-962B-4A62-A26A-36BC3F9DD15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2012A0FE-962B-4A62-A26A-36BC3F9DD15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2012A0FE-962B-4A62-A26A-36BC3F9DD15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F10777E-9D1D-40C0-93B4-D904958F911A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F10777E-9D1D-40C0-93B4-D904958F911A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F10777E-9D1D-40C0-93B4-D904958F911A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F10777E-9D1D-40C0-93B4-D904958F911A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61BA9093-1ED7-4329-9557-C5063BF983CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61BA9093-1ED7-4329-9557-C5063BF983CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61BA9093-1ED7-4329-9557-C5063BF983CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61BA9093-1ED7-4329-9557-C5063BF983CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B07200-E21B-4719-BADA-80579669AF3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B07200-E21B-4719-BADA-80579669AF3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B07200-E21B-4719-BADA-80579669AF3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B07200-E21B-4719-BADA-80579669AF3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99EB782B-6CC1-4F37-B4CE-9A16CDEB56E6}
+	EndGlobalSection
+EndGlobal

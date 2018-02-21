@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0ba40bd8-cc2e-42e7-b444-7407b4338256</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Common</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Web service\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Weather data provider\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\City.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Clouds.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Coord.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Forecast5Days.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\List.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Main.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SelectedPlaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Sys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Weather.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Wind.cs" />
+  </ItemGroup>
+</Project>
