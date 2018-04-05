@@ -13,8 +13,5 @@ namespace Forecast_Collector
             {
                 await Console.Out.WriteLineAsync("Greetings from HelloJob!");
             }
-
-
-        
     }
 }

@@ -10,6 +10,7 @@ namespace OpenWeatherMap
         private readonly string Forecast5DayAPI = "api.openweathermap.org/data/2.5/forecast";
         private HttpClient client = new HttpClient();
         private string requestAddress;
+
         public async Task<Forecast5> GetWeatherAsync(int cityId)
         {
             requestAddress = Get5DaysWeatherRequest(cityId);
@@ -24,5 +25,13 @@ namespace OpenWeatherMap
             string url = Forecast5DayAPI + "?" + cityId.ToString() + "&" + Credentials.ApiKey;
             return url;
         }
+
+        public async Task<null> GetCitiesListAsynch()
+        {
+            throw new HttpRequestException;
+
+        }
+
+
     }
 }

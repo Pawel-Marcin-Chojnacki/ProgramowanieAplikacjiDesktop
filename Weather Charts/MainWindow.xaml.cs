@@ -14,7 +14,8 @@ namespace Weather_Charts
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            CityManagerWindow cityManagerWindow = new CityManagerWindow();
+            cityManagerWindow.Show();
         }
     }
 }
