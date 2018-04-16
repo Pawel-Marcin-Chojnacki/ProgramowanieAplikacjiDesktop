@@ -26,9 +26,9 @@ namespace OpenWeatherMap
             return url;
         }
 
-        public async Task<null> GetCitiesListAsynch()
+        public async Task<City> GetCitiesListAsynch()
         {
-            throw new HttpRequestException;
+            throw new System.Exception();
 
         }
 

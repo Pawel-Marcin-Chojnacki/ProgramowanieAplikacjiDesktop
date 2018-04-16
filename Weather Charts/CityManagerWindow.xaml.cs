@@ -22,6 +22,18 @@ namespace Weather_Charts
         public CityManagerWindow()
         {
             InitializeComponent();
+            DataContext = new string[] { "course1", "course2" };
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseManager.WeatherDataContext weatherDataContext = new DatabaseManager.WeatherDataContext();
+            weatherDataContext.Weather.ToList();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
