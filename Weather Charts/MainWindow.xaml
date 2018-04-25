@@ -10,10 +10,10 @@
         <Button Content="Start service" Name="StartServiceButton" FontSize="16" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click"/>
         <Button Content="Stop service" FontSize="16" Name="StopServiceButton" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click"/>
         <Button Content="Clean database" FontSize="16" Name="CleanDatabaseButton" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click" Height="39"/>
-        <ComboBox HorizontalAlignment="Left" Margin="344,49,0,0" VerticalAlignment="Top" Width="163" Name="SelectedCity" />
+        <ComboBox HorizontalAlignment="Left" Margin="344,49,0,0" VerticalAlignment="Top" Width="163" Name="SelectedCity" SelectionChanged="SelectedCity_SelectionChanged" ItemsSource="{Binding CityList}"/>
         <TextBlock HorizontalAlignment="Left" FontSize="16" Margin="344,20,0,0" TextWrapping="Wrap" Text="Pick a city:" VerticalAlignment="Top" Width="163" Height="24"/>
         <Button Content="Show statistics" Name="ShowStatistics" FontSize="16" HorizontalAlignment="Left" Margin="344,76,0,0" VerticalAlignment="Top" Width="163" Click="Button_Click" Height="29"/>
-        <Button Content="Manage cities" FontSize="16" x:Name="ManageCitiesList" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click" Height="30"/>
+        <Button IsEnabled="False" Content="Manage cities" FontSize="16" x:Name="ManageCitiesList" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click" Height="30"/>
 
     </Grid>
 </Window>

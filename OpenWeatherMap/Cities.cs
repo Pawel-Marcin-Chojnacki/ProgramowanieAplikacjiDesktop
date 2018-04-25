@@ -4,6 +4,9 @@ using System.IO;
 
 namespace OpenWeatherMap
 {
+    /// <summary>
+    /// A type for city management.
+    /// </summary>
     public class Cities
     {
         /// <summary>
@@ -15,5 +18,6 @@ namespace OpenWeatherMap
             Forecast5 cities = JsonConvert.DeserializeObject<Forecast5>(File.ReadAllText(@"city.list.json"));
             return cities;
         }
+        
     }
 }

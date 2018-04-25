@@ -5,12 +5,20 @@ using System.Threading.Tasks;
 
 namespace OpenWeatherMap
 {
+    /// <summary>
+    /// Creates and sends requests to the site.
+    /// </summary>
     class Requests
     {
         private readonly string Forecast5DayAPI = "api.openweathermap.org/data/2.5/forecast";
         private HttpClient client = new HttpClient();
         private string requestAddress;
 
+        /// <summary>
+        /// Retrieves 5 days forecast for one city.
+        /// </summary>
+        /// <param name="cityId">The id number of the selected city.</param>
+        /// <returns>Forecast for 5 days.</returns>
         public async Task<Forecast5> GetWeatherAsync(int cityId)
         {
             requestAddress = Get5DaysWeatherRequest(cityId);
@@ -29,7 +37,6 @@ namespace OpenWeatherMap
         public async Task<City> GetCitiesListAsynch()
         {
             throw new System.Exception();
-
         }
 
 

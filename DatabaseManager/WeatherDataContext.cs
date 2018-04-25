@@ -45,7 +45,5 @@ namespace DatabaseManager
 
         // Models for operating on weather, detailed information collection.
         public virtual DbSet<SelectedPlaces> SelectedPlaces { get; set; }
-
-
     }
 }

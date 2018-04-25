@@ -6,18 +6,15 @@ namespace OpenWeatherMap
     {
         public void GetWeather(string city)
         {
-
             // Pobierz klucz
             string key = Credentials.ApiKey;
             // Złóż zapytanie
-
+            Requests weatherRequest = new Requests();
             // Wyślij zapytanie
 
             // Sparsuj jsona
 
             // Oddaj dane które przyszły z internetu.
-
-            throw new NotImplementedException();
         }
 
         /// <summary>
