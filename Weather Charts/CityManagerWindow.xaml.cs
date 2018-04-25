@@ -12,8 +12,6 @@ namespace Weather_Charts
         public CityManagerWindow()
         {
             InitializeComponent();
-
-            DataContext = new string[] { "course1", "course2" };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

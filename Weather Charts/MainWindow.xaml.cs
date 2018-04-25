@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DatabaseManager;
+using System.Collections.Generic;
 using System.Windows;
 using Weather_Charts.ViewModels;
 

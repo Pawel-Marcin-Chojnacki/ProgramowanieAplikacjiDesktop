@@ -8,7 +8,7 @@ namespace OpenWeatherMap
     /// <summary>
     /// Creates and sends requests to the site.
     /// </summary>
-    class Requests
+    public class Requests
     {
         private readonly string Forecast5DayAPI = "api.openweathermap.org/data/2.5/forecast";
         private HttpClient client = new HttpClient();
