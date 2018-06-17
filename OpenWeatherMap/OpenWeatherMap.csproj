@@ -59,9 +59,6 @@
     <Compile Include="Requests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\city.list.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
