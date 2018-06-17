@@ -4,16 +4,15 @@ namespace OpenWeatherMap
 {
     public class OpenWeaherAPI
     {
-        public void GetWeather(string city)
+        public async void GetWeather(string city)
         {
             // Pobierz klucz
             string key = Credentials.ApiKey;
             // Złóż zapytanie
             Requests weatherRequest = new Requests();
             // Wyślij zapytanie
-
+            var weather = await weatherRequest.GetWeatherAsync(cityName: city);
             // Sparsuj jsona
-
             // Oddaj dane które przyszły z internetu.
         }
 

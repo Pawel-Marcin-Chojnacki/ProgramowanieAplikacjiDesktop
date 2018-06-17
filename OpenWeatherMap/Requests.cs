@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OpenWeatherMap.DTO;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -19,22 +20,28 @@ namespace OpenWeatherMap
         /// </summary>
         /// <param name="cityId">The id number of the selected city.</param>
         /// <returns>Forecast for 5 days.</returns>
-        public async Task<Forecast5> GetWeatherAsync(int cityId)
+        public async Task<Forecast5> GetWeatherAsync(string cityName)
         {
-            requestAddress = Get5DaysWeatherRequest(cityId);
+            requestAddress = Get5DaysWeatherRequest(cityName);
             var result = await client.GetAsync(requestAddress);
             var resultContent = result.Content.ToString();
             var forecast = JsonConvert.DeserializeObject<Forecast5>(resultContent);
             return forecast;
         }
 
-        private string Get5DaysWeatherRequest(int cityId)
+        private string Get5DaysWeatherRequest(string cityName)
         {
+            int cityId = GetCityIdFromName(cityName);
             string url = Forecast5DayAPI + "?" + cityId.ToString() + "&" + Credentials.ApiKey;
             return url;
         }
 
-        public async Task<City> GetCitiesListAsynch()
+        private int GetCityIdFromName(string cityName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<City> GetCitiesListAsync()
         {
             throw new System.Exception();
         }
