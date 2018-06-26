@@ -10,22 +10,23 @@ namespace Weather_Charts
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowViewModel viewModel;
         public MainWindow()
         {
-            MainWindowViewModel viewModel = new MainWindowViewModel();
+            viewModel = new MainWindowViewModel();
             InitializeComponent();
             DataContext = viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            CityManagerWindow cityManagerWindow = new CityManagerWindow();
-            cityManagerWindow.Show();
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    CityManagerWindow cityManagerWindow = new CityManagerWindow();
+        //    cityManagerWindow.Show();
+        //}
 
         private void SelectedCity_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            
+           // viewModel.CurrentCity = 
         }
     }
 }
