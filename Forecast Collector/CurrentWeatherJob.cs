@@ -13,5 +13,10 @@ namespace Forecast_Collector
             {
                 
             }
+
+        void IJob.Execute(IJobExecutionContext context)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

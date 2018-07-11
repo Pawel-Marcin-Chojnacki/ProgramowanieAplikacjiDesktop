@@ -70,8 +70,10 @@ namespace Weather_Charts.ViewModels
 
         private List<string> GetCityListFromDatabase()
         {
+            throw new NotImplementedException();
             DatabaseManager.WeatherDataContext dataContext = new DatabaseManager.WeatherDataContext();
             //dataContext.
+
         }
     }
 }
