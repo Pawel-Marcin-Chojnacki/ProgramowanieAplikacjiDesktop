@@ -36,16 +36,10 @@ namespace OpenWeatherMap
             return url;
         }
 
-        private int GetCityIdFromName(string cityName)
+        private string GetCityIdFromName(string Name)
         {
-            throw new NotImplementedException();
+            return 
         }
-
-        public async Task<City> GetCitiesListAsync()
-        {
-            throw new System.Exception();
-        }
-
 
     }
 }

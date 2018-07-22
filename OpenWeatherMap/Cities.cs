@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.IO;
 
-namespace OpenWeatherMap
+namespace OpenWeatherMaps
 {
     /// <summary>
     /// A type for city management.
@@ -19,5 +19,19 @@ namespace OpenWeatherMap
             return cities;
         }
         
+    }
+
+    public enum City
+    {
+        Bydgoszcz = 3102014,
+        Torun = 3083271,
+        Warszawa = 6695624,
+        Krakow = 3094802,
+        Gdansk = 3099434,
+        Wroclaw = 3081368,
+        Londyn,
+        Berlin,
+        Paryz
+
     }
 }
