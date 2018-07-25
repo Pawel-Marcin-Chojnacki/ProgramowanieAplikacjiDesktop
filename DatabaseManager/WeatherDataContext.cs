@@ -24,7 +24,7 @@ namespace DatabaseManager
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var sqliteConnectionInitializer = new SqliteCreateDatabaseIfNotExists<WeatherDataContext>(modelBuilder);
+            var sqliteConnectionInitializer = new SqliteDropCreateDatabaseWhenModelChanges<WeatherDataContext>(modelBuilder);
             Database.SetInitializer(sqliteConnectionInitializer);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
@@ -35,14 +35,14 @@ namespace DatabaseManager
         // Models for DTO (converting js to database tables)
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Clouds> Clouds { get; set; }
-        public virtual DbSet<Coord> Coord { get; set; }
-        public virtual DbSet<Forecast5Days> Forecast5Days { get; set; }
-        public virtual DbSet<List> List { get; set; }
-        public virtual DbSet<Main> Main { get; set; }
-        public virtual DbSet<Sys> Sys { get; set; }
-        public virtual DbSet<Weather> Weather { get; set; }
+        //public virtual DbSet<Coord> Coord { get; set; }
+        //public virtual DbSet<Forecast5Days> Forecast5Days { get; set; }
+        //public virtual DbSet<List> List { get; set; }
+        public virtual DbSet<WeatherMain> WeatherMain { get; set; }
+        //public virtual DbSet<Sys> Sys { get; set; }
+        //public virtual DbSet<Weather> Weather { get; set; }
         public virtual DbSet<Wind> Wind { get; set; }
-
+        public virtual DbSet<PredictionDate> PredictionDate { get; set; }
         // Models for operating on weather, detailed information collection.
         public virtual DbSet<SelectedPlaces> SelectedPlaces { get; set; }
     }

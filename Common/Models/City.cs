@@ -12,17 +12,8 @@ namespace Common.Models
 
         public string Name { get; set; }
 
-        public Coord Coord { get; set; }
+        public int ServiceId { get; set; }
 
-        public string Country { get; set; }
-
-        public string Cod { get; set; }
-
-        public double Message { get; set; }
-
-        public long Cnt { get; set; }
-
-        public List[] List { get; set; }
+        public bool Observed { get; set; }
     }
-
 }

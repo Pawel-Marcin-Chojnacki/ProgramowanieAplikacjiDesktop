@@ -10,6 +10,8 @@ namespace Common.Models
     {
         public double Speed { get; set; }
 
-        public double Deg { get; set; }
+        public double Direction { get; set; }
+
+        public long Id { get; set; }
     }
 }
