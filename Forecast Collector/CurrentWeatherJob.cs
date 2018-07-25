@@ -7,14 +7,20 @@ using System.Threading.Tasks;
 
 namespace Forecast_Collector
 {
+
     public class CurrentWeatherJob : IJob
     {
-            public async Task Execute(IJobExecutionContext context)
-            {
+            //public async Task Execute(IJobExecutionContext context)
+            //{
                 
-            }
+            //}
 
-        void IJob.Execute(IJobExecutionContext context)
+        void Execute(IJobExecutionContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IJob.Execute(IJobExecutionContext context)
         {
             throw new NotImplementedException();
         }

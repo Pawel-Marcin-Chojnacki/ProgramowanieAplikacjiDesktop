@@ -36,9 +36,9 @@ namespace OpenWeatherMap
             return url;
         }
 
-        private string GetCityIdFromName(string Name)
+        private int GetCityIdFromName(string Name)
         {
-            return 
+            return 0;
         }
 
     }

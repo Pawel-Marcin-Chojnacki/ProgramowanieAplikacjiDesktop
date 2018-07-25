@@ -2,11 +2,17 @@
 
 namespace OpenWeatherMap
 {
+    /// <summary>
+    /// Allows access to Open Weather services.
+    /// </summary>
     public class OpenWeaherAPI
     {
+        /// <summary>
+        /// Gets weather for a given city.
+        /// </summary>
+        /// <param name="city">Preselected city name. Must exist in database mappings.</param>
         public async void GetWeather(string city)
         {
-            // Pobierz klucz
             string key = Credentials.ApiKey;
             // Złóż zapytanie
             Requests weatherRequest = new Requests();
