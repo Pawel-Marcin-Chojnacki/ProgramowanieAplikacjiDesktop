@@ -8,6 +8,8 @@ namespace Common.Models
 {
     public partial class Clouds
     {
+        public int Id { get; set; }
+
         public long All { get; set; }
     }
 }
