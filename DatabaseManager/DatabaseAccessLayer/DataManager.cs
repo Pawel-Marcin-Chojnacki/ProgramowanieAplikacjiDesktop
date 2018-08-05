@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace DatabaseManager
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DataManager
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
         public DataManager(IDataContext context)
         {
             dataContext = context;
@@ -16,9 +23,21 @@ namespace DatabaseManager
 
         private IDataContext dataContext;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
         public void CleanAllData(string path)
         {
-            File.Delete(path);
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception exception)
+            {
+                //TODO: Log to Windows Events.
+                throw exception;
+            }
         }
     }
 }

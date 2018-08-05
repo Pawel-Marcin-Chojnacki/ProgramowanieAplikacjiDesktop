@@ -3,14 +3,15 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using Common.Models;
+using SQLite.CodeFirst;
 
 namespace DatabaseManager.Migrations
 {
-    internal sealed class Configuration : DbMigrationsConfiguration<WeatherDataContext>
+    public class Configuration : SqliteCreateDatabaseIfNotExists<WeatherDataContext>
     {
-        public Configuration()
+        public Configuration(DbModelBuilder modelBuilder) : base (modelBuilder)
         {
-            AutomaticMigrationsEnabled = true;
+            //AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(WeatherDataContext context)
