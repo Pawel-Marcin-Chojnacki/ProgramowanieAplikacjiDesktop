@@ -8,14 +8,14 @@ namespace Common.Models
     {
         public int Id { get; set; }
 
-        public int CityId { get; set; }
+        public virtual ICollection<City> CityId { get; set; }
 
-        public int WeatherId { get; set; }
+        public virtual ICollection<WeatherMain> WeatherMainId { get; set; }
 
-        public int WindId { get; set; }
+        public virtual ICollection<Wind> WindId { get; set; }
 
-        public int CloudsId { get; set; }
+        public virtual ICollection<Clouds> CloudsId { get; set; }
 
-        public int TimeId { get; set; }
+        public virtual ICollection<PredictionDate> TimeId { get; set; }
     }
 }
