@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Common.Models
 {
@@ -12,6 +14,9 @@ namespace Common.Models
 
         public double Direction { get; set; }
 
-        public long Id { get; set; }
+        [Key, ForeignKey("Forecast")]
+        public int Id { get; set; }
+
+        public virtual ICollection<Forecast> Forecast { get; set; }
     }
 }

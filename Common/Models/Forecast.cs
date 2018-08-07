@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Common.Models
@@ -7,15 +8,25 @@ namespace Common.Models
     public partial class Forecast
     {
         public int Id { get; set; }
+        public int CityId { get; set; }
+        public int WeatherMainId { get; set; }
+        public int WindId { get; set; }
+        public int CloudsId { get; set; }
+        public int TimeId { get; set; }
 
-        public virtual ICollection<City> CityId { get; set; }
+        [ForeignKey("CityId")]
+        public virtual City City { get; set; }
 
-        public virtual ICollection<WeatherMain> WeatherMainId { get; set; }
+        [ForeignKey("WeatherMainId")]
+        public virtual WeatherMain WeatherMain { get; set; }
 
-        public virtual ICollection<Wind> WindId { get; set; }
+        [ForeignKey("WindId")]
+        public virtual Wind Wind { get; set; }
 
-        public virtual ICollection<Clouds> CloudsId { get; set; }
+        [ForeignKey("CloudsId")]
+        public virtual Clouds Clouds { get; set; }
 
-        public virtual ICollection<PredictionDate> TimeId { get; set; }
+        [ForeignKey("TimeId")]
+        public virtual PredictionDate Time { get; set; }
     }
 }
