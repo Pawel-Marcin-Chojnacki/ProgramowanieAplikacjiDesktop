@@ -15,15 +15,9 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Models\City.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Clouds.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Coord.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Forecast.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Forecast5Days.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\List.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Main.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ForecastEntity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PredictionDate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\SelectedPlaces.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Sys.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Weather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\WeatherMain.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Wind.cs" />
   </ItemGroup>
