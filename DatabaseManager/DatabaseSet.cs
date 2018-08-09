@@ -11,11 +11,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseManager
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    public class DatabaseSet<TEntity> : DbSet<TEntity>, IDatabaseSet where TEntity : class
+    public class DatabaseSet<TEntity> : DbSet<TEntity> where TEntity : class
     {
     }
 }

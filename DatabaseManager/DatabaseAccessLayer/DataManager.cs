@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseManager.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,27 +8,18 @@ using System.Threading.Tasks;
 
 namespace DatabaseManager
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class DataManager
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private IDataContext dataContext;
+
         public DataManager(IDataContext context)
         {
             dataContext = context;
         }
 
-        private IDataContext dataContext;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="path"></param>
-        public void CleanAllData(string path)
+        public bool CleanAllData(string path)
         {
             try
             {
@@ -38,6 +30,7 @@ namespace DatabaseManager
                 //TODO: Log to Windows Events.
                 throw exception;
             }
+            return true;
         }
     }
 }
