@@ -5,6 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using Common.Models;
 using DatabaseManager.Migrations;
+using DatabaseManager.Interfaces;
 
 namespace DatabaseManager
 {
@@ -36,17 +37,17 @@ namespace DatabaseManager
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // Models for DTO (converting js to database tables)
-        public virtual DatabaseSet<City> City { get; set; }
-        public virtual DatabaseSet<Clouds> Clouds { get; set; }
+        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Clouds> Clouds { get; set; }
         //public virtual DbSet<Coord> Coord { get; set; }
         //public virtual DbSet<Forecast5Days> Forecast5Days { get; set; }
         //public virtual DbSet<List> List { get; set; }
-        public virtual DatabaseSet<WeatherMain> WeatherMain { get; set; }
-        public virtual DatabaseSet<Forecast> Forecast { get; set; }
+        public virtual DbSet<WeatherMain> WeatherMain { get; set; }
+        public virtual DbSet<Forecast> Forecast { get; set; }
         //public virtual DbSet<Sys> Sys { get; set; }
         //public virtual DbSet<WeatherMainId> WeatherMainId { get; set; }
-        public virtual DatabaseSet<Wind> Wind { get; set; }
-        public virtual DatabaseSet<PredictionDate> PredictionDate { get; set; }
+        public virtual DbSet<Wind> Wind { get; set; }
+        public virtual DbSet<PredictionDate> PredictionDate { get; set; }
         // Models for operating on weather, detailed information collection.
         //public virtual DbSet<SelectedPlaces> SelectedPlaces { get; set; }
     }
