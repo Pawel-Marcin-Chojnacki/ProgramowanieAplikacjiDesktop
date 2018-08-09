@@ -1,23 +1,21 @@
 ﻿using Common.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DatabaseManager
+namespace DatabaseManager.Interfaces
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public interface IDataContext
     {
-        DatabaseSet<City> City { get; set; }
-        DatabaseSet<Clouds> Clouds { get; set; }
-        DatabaseSet<WeatherMain> WeatherMain { get; set; }
-        DatabaseSet<Forecast> Forecast { get; set; }
-        DatabaseSet<Wind> Wind { get; set; }
-        DatabaseSet<PredictionDate> PredictionDate { get; set; }
+        DbSet<City> City { get; set; }
+        DbSet<Clouds> Clouds { get; set; }
+        DbSet<WeatherMain> WeatherMain { get; set; }
+        DbSet<Forecast> Forecast { get; set; }
+        DbSet<Wind> Wind { get; set; }
+        DbSet<PredictionDate> PredictionDate { get; set; }
 
         Task<int> SaveChangesAsync();
     }
