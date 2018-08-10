@@ -25,10 +25,6 @@ namespace DatabaseManager
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //var model = modelBuilder.Build(Database.Connection);
-            //IDatabaseCreator sqliteDatabase = new SqliteDatabaseCreator();
-            //sqliteDatabase.Create(Database, model);
-
             var sqliteConnectionInitializer = new Configuration(modelBuilder);
             Database.SetInitializer(sqliteConnectionInitializer);
         }
