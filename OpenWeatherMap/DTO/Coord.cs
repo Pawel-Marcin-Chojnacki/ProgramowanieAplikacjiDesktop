@@ -9,10 +9,10 @@ namespace OpenWeatherMap.DTO
 {
     public partial class Coord
     {
-        [JsonProperty("lon")]
-        public double Lon { get; set; }
-
         [JsonProperty("lat")]
         public double Lat { get; set; }
+
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
     }
 }

@@ -55,25 +55,21 @@ namespace Forecast_Collector
                 await scheduler.Start();
 
                 IJobDetail job = JobBuilder.Create<CurrentWeatherJob>()
-                    .WithIdentity("CurrentWeatherJob", "group1")
+                    .WithIdentity("CurrentWeatherJob", "mainGroup")
                     .Build();
 
-                // Trigger the job to run now, and then repeat every 10 seconds
                 ITrigger trigger = TriggerBuilder.Create()
-                    .WithIdentity("timetrigger", "group1")
+                    .WithIdentity("updateDataTrigger", "mainGroup")
                     .StartNow()
                     .WithSimpleSchedule(x => x
-                        .WithIntervalInSeconds(1)
-                        .RepeatForever())
+                        .WithIntervalInMinutes(10))
                     .Build();
 
-                // Tell quartz to schedule the job using our trigger
                 await scheduler.ScheduleJob(job, trigger);
             }
             catch (SchedulerException se)
             {
-                //TODO: Event Log
-                throw;
+                throw se;
             }
         }
 

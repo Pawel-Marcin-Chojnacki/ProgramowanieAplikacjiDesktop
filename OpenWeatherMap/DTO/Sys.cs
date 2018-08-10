@@ -10,6 +10,6 @@ namespace OpenWeatherMap.DTO
     public partial class Sys
     {
         [JsonProperty("pod")]
-        public string Pod { get; set; }
+        public Pod Pod { get; set; }
     }
 }

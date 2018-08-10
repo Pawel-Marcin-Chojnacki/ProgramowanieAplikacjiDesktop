@@ -13,12 +13,12 @@ namespace OpenWeatherMap.DTO
         public long Id { get; set; }
 
         [JsonProperty("main")]
-        public string Main { get; set; }
+        public MainEnum Main { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("icon")]
-        public string Icon { get; set; }
+        public Icon Icon { get; set; }
     }
 }

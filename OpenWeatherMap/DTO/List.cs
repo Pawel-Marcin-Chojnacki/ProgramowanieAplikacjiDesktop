@@ -13,10 +13,10 @@ namespace OpenWeatherMap.DTO
         public long Dt { get; set; }
 
         [JsonProperty("main")]
-        public Main Main { get; set; }
+        public MainClass Main { get; set; }
 
         [JsonProperty("weather")]
-        public Weather[] Weather { get; set; }
+        public List<Weather> Weather { get; set; }
 
         [JsonProperty("clouds")]
         public Clouds Clouds { get; set; }
@@ -28,6 +28,9 @@ namespace OpenWeatherMap.DTO
         public Sys Sys { get; set; }
 
         [JsonProperty("dt_txt")]
-        public System.DateTime DtTxt { get; set; }
+        public DateTimeOffset DtTxt { get; set; }
+
+        [JsonProperty("rain", NullValueHandling = NullValueHandling.Ignore)]
+        public Rain Rain { get; set; }
     }
 }

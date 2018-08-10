@@ -20,18 +20,6 @@ namespace OpenWeatherMap.DTO
 
         [JsonProperty("country")]
         public string Country { get; set; }
-
-        [JsonProperty("cod")]
-        public string Cod { get; set; }
-
-        [JsonProperty("message")]
-        public double Message { get; set; }
-
-        [JsonProperty("cnt")]
-        public long Cnt { get; set; }
-
-        [JsonProperty("list")]
-        public List[] List { get; set; }
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenWeatherMap.DTO;
+using System.Threading.Tasks;
 
 namespace OpenWeatherMap
 {
@@ -11,15 +12,12 @@ namespace OpenWeatherMap
         /// Gets weather for a given city.
         /// </summary>
         /// <param name="city">Preselected city name. Must exist in database mappings.</param>
-        public async void GetWeather(string city)
+        public async Task<Forecast> GetForecast(int cityId)
         {
-            string key = Credentials.ApiKey;
-            // Złóż zapytanie
             Requests weatherRequest = new Requests();
-            // Wyślij zapytanie
-            var weather = await weatherRequest.GetWeatherAsync(cityName: city);
-            // Sparsuj jsona
-            // Oddaj dane które przyszły z internetu.
+            var weather = await weatherRequest.GetWeatherAsync(cityId);
+            var forecast = Forecast.FromJson(weather);
+            return forecast;
         }
 
         /// <summary>

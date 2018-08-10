@@ -22,9 +22,9 @@ namespace DatabaseManager.Migrations
                 new City { Name = "Kraków", Observed = true, ServiceId = 3094802 },
                 new City { Name = "Gdańsk", Observed = true, ServiceId = 3099434 },
                 new City { Name = "Wrocław", Observed = true, ServiceId = 3081368 },
-                new City { Name = "Londyn", Observed = true, ServiceId = 3081368 },
-                new City { Name = "Berlin", Observed = true, ServiceId = 3081368 },
-                new City { Name = "Paryż", Observed = true, ServiceId = 3081368 }
+                new City { Name = "Londyn", Observed = true, ServiceId = 5056033 },
+                new City { Name = "Berlin", Observed = true, ServiceId = 2950159 },
+                new City { Name = "Paryż", Observed = true, ServiceId = 6455259 }
                 );
         }
     }

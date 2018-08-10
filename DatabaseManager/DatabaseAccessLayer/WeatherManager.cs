@@ -19,10 +19,23 @@ namespace DatabaseManager
 
         public async void SaveForecastEntity(ForecastEntity forecast)
         {
+            var queryExists = dataContext.Forecast.Where(x => x.City.ServiceId == forecast.CityServiceId).Where(x => x.Time.Time == forecast.PredictionDate.Time);
+            if (queryExists.Count() > 0)
+            {
+                return;
+            }
             dataContext.Clouds.Add(forecast.Clouds);
             dataContext.PredictionDate.Add(forecast.PredictionDate);
             dataContext.WeatherMain.Add(forecast.WeatherMain);
             dataContext.Wind.Add(forecast.Wind);
+            if(forecast.Forecast == null)
+            {
+                forecast.Forecast = new Forecast();
+                forecast.Forecast.Clouds = forecast.Clouds;
+                forecast.Forecast.Time = forecast.PredictionDate;
+                forecast.Forecast.WeatherMain = forecast.WeatherMain;
+                forecast.Forecast.Wind = forecast.Wind;
+            }
             forecast.Forecast.CityId = dataContext.City.Where(u => u.ServiceId == forecast.CityServiceId).Single().Id;
             dataContext.Forecast.Add(forecast.Forecast);
 

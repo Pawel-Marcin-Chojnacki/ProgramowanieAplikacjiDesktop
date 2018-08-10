@@ -8,10 +8,15 @@ namespace Common.Models
     public partial class Forecast
     {
         public int Id { get; set; }
+
         public int CityId { get; set; }
+
         public int WeatherMainId { get; set; }
+
         public int WindId { get; set; }
+
         public int CloudsId { get; set; }
+
         public int TimeId { get; set; }
 
         [ForeignKey("CityId")]

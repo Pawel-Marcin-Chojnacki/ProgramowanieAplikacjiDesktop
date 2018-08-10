@@ -5,6 +5,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using DatabaseManager;
 using Quartz;
 using Quartz.Impl;
 
@@ -13,7 +14,7 @@ namespace Forecast_Collector
     public static class Program
     {
         /// <summary>
-        /// Główny punkt wejścia dla aplikacji.
+        /// Main entry point of application.
         /// </summary>
         public static void Main(string[] args)
         {
