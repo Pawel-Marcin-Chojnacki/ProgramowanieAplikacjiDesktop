@@ -1,6 +1,7 @@
 ﻿using DatabaseManager;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using Weather_Charts.ViewModels;
 
 namespace Weather_Charts
@@ -20,13 +21,24 @@ namespace Weather_Charts
 
         //private void Button_Click(object sender, RoutedEventArgs e)
         //{
-        //    CityManagerWindow cityManagerWindow = new CityManagerWindow();
         //    cityManagerWindow.Show();
+        //    CityManagerWindow cityManagerWindow = new CityManagerWindow();
         //}
 
-        private void SelectedCity_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        //private void SelectedCity_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        //{
+        //   // viewModel.CurrentCity = 
+        //}
+
+        private void CleanDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
-           // viewModel.CurrentCity = 
+            viewModel.CleanDatabase();
+        }
+
+        private void ShowStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            GeneralChart chart = new GeneralChart();
+            chart.Show();
         }
     }
 }

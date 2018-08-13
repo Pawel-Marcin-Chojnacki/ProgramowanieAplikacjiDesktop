@@ -23,22 +23,22 @@ namespace OpenWeatherMap_Tests
             Assert.Equal(currentKey, key);
         }
 
-        [Theory]
-        public void GetWeatherShouldReturnJSON()
-        {
-            //Arrange
-            //Act
-            //Assert
-        }
+        //[Theory]
+        //public void GetWeatherShouldReturnJSON()
+        //{
+        //    //Arrange
+        //    //Act
+        //    //Assert
+        //}
 
-        [Theory]
-        public void GetAPIKeyShouldReturnCorrectKey()
-        {
-            //Arrange
+        //[Theory]
+        //public void GetAPIKeyShouldReturnCorrectKey()
+        //{
+        //    //Arrange
 
-            //Act
+        //    //Act
 
-            //Assert
-        }
+        //    //Assert
+        //}
     }
 }

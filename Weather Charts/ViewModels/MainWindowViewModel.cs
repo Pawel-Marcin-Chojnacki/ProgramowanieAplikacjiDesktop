@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using DatabaseManager;
 
 namespace Weather_Charts.ViewModels
 {
@@ -14,6 +16,9 @@ namespace Weather_Charts.ViewModels
     {
         private List<string> cityList;
         private string selectedCity;
+        private ServiceManager service;
+        private string serviceName = "ForecastCollector";
+        private DataManager data;
 
         /// <summary>
         /// Provides a list of cities selction.
@@ -53,6 +58,8 @@ namespace Weather_Charts.ViewModels
         public MainWindowViewModel()
         {
             CityList = GetCityListFromDatabase();
+            service = new ServiceManager(serviceName);
+            data = new DataManager(new WeatherDataContext());
 
         }
 
@@ -68,12 +75,53 @@ namespace Weather_Charts.ViewModels
             }
         }
 
-        private List<string> GetCityListFromDatabase()
+        public List<string> GetCityListFromDatabase()
         {
-            throw new NotImplementedException();
-            DatabaseManager.WeatherDataContext dataContext = new DatabaseManager.WeatherDataContext();
-            //dataContext.
+            CityManager cityManager = new CityManager(new WeatherDataContext());
+            var observedCities = cityManager.GetObservedCities();
+            List<string> cityNames = observedCities.Where(o => o.Observed == true).Select(x => x.Name).ToList();
+            return cityNames;
+        }
 
+        public async void StopService()
+        {
+            bool success = await service.StopService();
+            if (success)
+            {
+                
+            }
+            else
+            {
+
+            }
+        }
+
+        public async void StartService()
+        {
+            bool success = await service.StopService();
+            if (success)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+        public async void CleanDatabase()
+        {
+            //Pobierz ścieżkę z app.config
+            string dbPath = ConfigurationManager.ConnectionStrings["WeatherDataContext"].ConnectionString;
+            bool success = await data.CleanAllData(dbPath);
+            if (success)
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }

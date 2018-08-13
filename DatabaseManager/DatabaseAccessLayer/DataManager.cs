@@ -19,7 +19,7 @@ namespace DatabaseManager
         }
 
 
-        public bool CleanAllData(string path)
+        public async Task<bool> CleanAllData(string path)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace DatabaseManager
             catch (Exception exception)
             {
                 //TODO: Log to Windows Events.
-                throw exception;
+                return false;
             }
             return true;
         }

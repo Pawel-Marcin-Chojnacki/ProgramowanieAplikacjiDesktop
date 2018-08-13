@@ -23,7 +23,7 @@ namespace DatabaseManager
             return observedCities;
         }
         
-        public async void AddObservedCity(City city)
+        public async Task<int> AddObservedCity(City city)
         {
             City newCity = dataContext.City.Where(c => c.Name == city.Name).FirstOrDefault();
             if (newCity == null)
@@ -34,14 +34,14 @@ namespace DatabaseManager
             {
                 newCity.Observed = true;
             }
-            await dataContext.SaveChangesAsync();
+            return await dataContext.SaveChangesAsync();
         }
 
-        public async void RemoveObservedCity(City city)
+        public async Task<int> RemoveObservedCity(City city)
         {
             var removedCity = dataContext.City.Where(c => c.Name == city.Name).SingleOrDefault();
             removedCity.Observed = false;
-            await dataContext.SaveChangesAsync();
+            return await dataContext.SaveChangesAsync();
         }
     }
 }
