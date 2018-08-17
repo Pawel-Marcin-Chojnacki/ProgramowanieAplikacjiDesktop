@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="Weather Charts" Height="350" Width="525">
     <Grid>
-        <Button Content="Start service" Name="StartServiceButton" FontSize="16" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top" Width="139" Height="55" />
-        <Button Content="Stop service" FontSize="16" Name="StopServiceButton" HorizontalAlignment="Left" Margin="10,194,0,0" VerticalAlignment="Top" Width="139" Height="55"/>
-        <Button Content="Clean database" FontSize="16" Name="CleanDatabaseButton" HorizontalAlignment="Left" Margin="10,254,0,0" VerticalAlignment="Top" Width="139" Height="55" Click="CleanDatabaseButton_Click"/>
-        <ComboBox HorizontalAlignment="Left" Margin="344,49,0,0" VerticalAlignment="Top" Width="163" Name="SelectedCity" ItemsSource="{Binding CityList}" SelectedItem="{Binding SelectedCity}"/>
-        <TextBlock HorizontalAlignment="Left" FontSize="16" Margin="344,20,0,0" TextWrapping="Wrap" Text="Pick a city:" VerticalAlignment="Top" Width="163" Height="24"/>
-        <Button Content="Show statistics" Name="ShowStatistics" FontSize="16" HorizontalAlignment="Left" Margin="206,234,0,0" VerticalAlignment="Top" Width="212" Height="62" Click="ShowStatistics_Click"/>
+        <Button Content="Start service" Name="StartServiceButton" FontSize="16" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="139" Height="55" Click="StartServiceButton_Click" />
+        <Button Content="Stop service" FontSize="16" Name="StopServiceButton" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="139" Height="55" Click="StopServiceButton_Click"/>
+        <Button Content="Delete database" FontSize="16" Name="CleanDatabaseButton" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Width="139" Height="55" Click="CleanDatabaseButton_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="299,12,0,0" VerticalAlignment="Top" Width="163" Name="SelectedCity" ItemsSource="{Binding CityList}" SelectedItem="{Binding SelectedCity}"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="16" Margin="174,10,0,0" TextWrapping="Wrap" Text="Pick a city:" VerticalAlignment="Top" Width="125" Height="24"/>
+        <Button Content="Pressure" Name="ShowPressure" FontSize="16" HorizontalAlignment="Left" Margin="299,41,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowPressure_Click"/>
+        <Button Content="Temperature" Name="ShowTemperature" FontSize="16" HorizontalAlignment="Left" Margin="299,90,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowTemperature_Click"/> 
+        <Button Content="Multiple locations" Name="ShowMultiTemperature" FontSize="16" HorizontalAlignment="Left" Margin="299,140,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowMultiTemperature_Click"/> 
         <!--<Button IsEnabled="False" Content="Manage cities" FontSize="16" x:Name="ManageCitiesList" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click" Height="30"/>-->
 
     </Grid>

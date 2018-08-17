@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using DatabaseManager;
+using Common.Models;
 
 namespace Weather_Charts.ViewModels
 {
@@ -18,6 +19,8 @@ namespace Weather_Charts.ViewModels
         private string selectedCity;
         private ServiceManager service;
         private string serviceName = "ForecastCollector";
+        private List<City> observedCities;
+        public City currentCity;
         private DataManager data;
 
         /// <summary>
@@ -48,6 +51,7 @@ namespace Weather_Charts.ViewModels
             set
             {
                 selectedCity = value;
+                currentCity = observedCities.Single(x => x.Name == selectedCity);
                 NotifyPropertyChanged("SelectedCity");
             }
         }
@@ -57,6 +61,7 @@ namespace Weather_Charts.ViewModels
         /// </summary>
         public MainWindowViewModel()
         {
+            currentCity = new City();
             CityList = GetCityListFromDatabase();
             service = new ServiceManager(serviceName);
             data = new DataManager(new WeatherDataContext());
@@ -64,7 +69,6 @@ namespace Weather_Charts.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         public void NotifyPropertyChanged(string propertyName)
         {
@@ -78,7 +82,7 @@ namespace Weather_Charts.ViewModels
         public List<string> GetCityListFromDatabase()
         {
             CityManager cityManager = new CityManager(new WeatherDataContext());
-            var observedCities = cityManager.GetObservedCities();
+            observedCities = cityManager.GetObservedCities();
             List<string> cityNames = observedCities.Where(o => o.Observed == true).Select(x => x.Name).ToList();
             return cityNames;
         }
@@ -109,18 +113,19 @@ namespace Weather_Charts.ViewModels
             }
         }
 
-        public async void CleanDatabase()
+        public void CleanDatabase()
         {
             //Pobierz ścieżkę z app.config
             string dbPath = ConfigurationManager.ConnectionStrings["WeatherDataContext"].ConnectionString;
-            bool success = await data.CleanAllData(dbPath);
+            dbPath = dbPath.Substring(12);
+            bool success = data.CleanAllData(dbPath);
             if (success)
             {
-
+                // Db deleted
             }
             else
             {
-
+                // File is currently used.
             }
         }
     }

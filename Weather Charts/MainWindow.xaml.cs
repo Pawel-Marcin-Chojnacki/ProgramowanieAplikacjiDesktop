@@ -19,25 +19,36 @@ namespace Weather_Charts
             DataContext = viewModel;
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    cityManagerWindow.Show();
-        //    CityManagerWindow cityManagerWindow = new CityManagerWindow();
-        //}
-
-        //private void SelectedCity_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        //{
-        //   // viewModel.CurrentCity = 
-        //}
-
         private void CleanDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
             viewModel.CleanDatabase();
         }
 
-        private void ShowStatistics_Click(object sender, RoutedEventArgs e)
+        private void ShowTemperature_Click(object sender, RoutedEventArgs e)
         {
-            GeneralChart chart = new GeneralChart();
+            Temperature chart = new Temperature(viewModel.currentCity);
+            chart.Show();
+        }
+
+        private void ShowMultiTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            MultiTemperature chart = new MultiTemperature();
+            chart.Show();
+        }
+
+        private void StartServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.StartService();
+        }
+
+        private void StopServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.StopService();
+        }
+
+        private void ShowPressure_Click(object sender, RoutedEventArgs e)
+        {
+            Pressure chart = new Pressure(viewModel.currentCity);
             chart.Show();
         }
     }

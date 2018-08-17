@@ -80,12 +80,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GeneralChart.xaml.cs">
-      <DependentUpon>GeneralChart.xaml</DependentUpon>
+    <Compile Include="BasicColumn.xaml.cs">
+      <DependentUpon>BasicColumn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ServiceManager.cs" />
+    <Compile Include="BasicLineChart.xaml.cs">
+      <DependentUpon>BasicLineChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultiTempModel.cs" />
+    <Compile Include="SolidChart.xaml.cs">
+      <DependentUpon>SolidChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultiTemperature.xaml.cs">
+      <DependentUpon>MultiTemperature.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pressure.xaml.cs">
+      <DependentUpon>Pressure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ServiceManager.cs" />
+    <Compile Include="Temperature.xaml.cs">
+      <DependentUpon>Temperature.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Page Include="GeneralChart.xaml">
+    <Compile Include="ViewModels\ModelsService.cs" />
+    <Compile Include="ViewModels\MultiTemperatureViewModel.cs" />
+    <Compile Include="ViewModels\PressureViewModel.cs" />
+    <Compile Include="ViewModels\TemperatureViewModel.cs" />
+    <Page Include="BasicColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicLineChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SolidChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,6 +129,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MultiTemperature.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pressure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Temperature.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -135,7 +175,6 @@
       <Name>DatabaseManager</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Common\Common.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
