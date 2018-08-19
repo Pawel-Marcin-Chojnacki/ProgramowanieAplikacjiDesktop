@@ -13,6 +13,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Weather data provider\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Logging\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\City.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Clouds.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Forecast.cs" />
