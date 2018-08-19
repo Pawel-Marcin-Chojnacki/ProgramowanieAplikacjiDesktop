@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:CompleteSetup"
+"ProjectName" = "8:WeatherApp"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -22,7 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_00430ACB4024390E894863D462073263"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_061B55D13178747272B4DCC3F32A420F"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_07CAC9ED0375E21730559B75EE5601DC"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_0A561112C378EB312DE7E882956CD48A"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_13D697B5CEAA4C0E7F753CC6D0735D50"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,13 +100,13 @@
         "Entry"
         {
         "MsmKey" = "8:_140BA07B96CA132324F0AB574247A132"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2DCD33D504006299C4D6BD7DB2C7CBA9"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,7 +130,13 @@
         "Entry"
         {
         "MsmKey" = "8:_3B96FDBDCBF4B1CF3FDF46C36AF94DAD"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -142,7 +148,7 @@
         "Entry"
         {
         "MsmKey" = "8:_49C8616A298FE901E6B3DC8A548D7580"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,7 +166,7 @@
         "Entry"
         {
         "MsmKey" = "8:_4F7698EC54DC05AB0695227B2FA227BF"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -183,12 +189,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_A67BC6889491168720E5CF8FAFAFA86A"
         "OwnerKey" = "8:_00430ACB4024390E894863D462073263"
         "MsmSig" = "8:_UNDEFINED"
@@ -196,7 +196,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A67BC6889491168720E5CF8FAFAFA86A"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -226,13 +226,13 @@
         "Entry"
         {
         "MsmKey" = "8:_B0ECD1A9265FF367B53EA8EC4FA49776"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B0FA7777B4AA9B1CE0DD1202F2D3EC6F"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -244,7 +244,7 @@
         "Entry"
         {
         "MsmKey" = "8:_C759CF743BD2F1AB0C5F6D4CE05D079A"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -256,7 +256,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CAD3A8A28DFC5962628AE0C96AA94340"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -268,7 +268,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D0BB0FE4E7D1B88994033CAF3F10D765"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -286,7 +286,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_79932DF315C94B59A286EFA7A368B0A9"
+        "OwnerKey" = "8:_3E9FE3E37B104697BFC15C6226F98869"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -437,6 +437,62 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_22AE1E8A810542FDB136D5EEECC25FD5"
+            {
+            "Name" = "8:Primary output from Forecast Collector (Active)"
+            "Condition" = "8:"
+            "Object" = "8:"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_555A50F1_84FF_4A88_B549_EE4DC647EEE6"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_3EEC176020CD4ED49584A028CD8ECABD"
+            {
+            "Name" = "8:Primary output from Forecast Collector (Active)"
+            "Condition" = "8:"
+            "Object" = "8:"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_3A2F4380_245B_4A9B_8830_6C0E761B9CCD"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_62B3C0FC91CB47A99929EE346F4730BA"
+            {
+            "Name" = "8:Primary output from Forecast Collector (Active)"
+            "Condition" = "8:"
+            "Object" = "8:"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_91C80B3C_3568_4E3C_9181_867CC38A50DC"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_7B778B3AA22D451C84F7FDBE3B220253"
+            {
+            "Name" = "8:Primary output from Forecast Collector (Active)"
+            "Condition" = "8:"
+            "Object" = "8:"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_F8AC07E0_D9D3_420F_9366_9B2D39114148"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -1103,12 +1159,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:UMK"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:CompleteSetup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Pawel"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -1215,48 +1271,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_402644D80D5E4E1CA019C66C558AAC7A"
-            {
-            "Name" = "8:Shortcut to Primary output from Weather Charts (Active)"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_6A506C100DC548D68329260B2EA0ACEA"
-            "Folder" = "8:_1FD38EF0201E406EB23B828C5972BD68"
-            "WorkingFolder" = "8:_9E303595C5E04DE194FC870BD6F30E58"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4DC132C1F5CB4B2AAA84E57FB4FCA450"
-            {
-            "Name" = "8:Weather Charts"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_1FD38EF0201E406EB23B828C5972BD68"
-            "Folder" = "8:_1FD38EF0201E406EB23B828C5972BD68"
-            "WorkingFolder" = "8:_1FD38EF0201E406EB23B828C5972BD68"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_620040D5CCB94970B969B2D33AA773C9"
-            {
-            "Name" = "8:Weather Charts"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_C3D88DEB1BB84FDEA1FF609066EF87B3"
-            "Folder" = "8:_C3D88DEB1BB84FDEA1FF609066EF87B3"
-            "WorkingFolder" = "8:_C3D88DEB1BB84FDEA1FF609066EF87B3"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -1656,6 +1670,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3E9FE3E37B104697BFC15C6226F98869"
+            {
+            "SourcePath" = "8:..\\Forecast Collector\\obj\\Release\\Forecast Collector.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9E303595C5E04DE194FC870BD6F30E58"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{993E3A81-315F-4B1B-B001-4B679C1CC1E9}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6A506C100DC548D68329260B2EA0ACEA"
             {
             "SourcePath" = "8:..\\Weather Charts\\obj\\Release\\Weather_Charts.exe"
@@ -1679,34 +1721,6 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{61BA9093-1ED7-4329-9557-C5063BF983CE}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_79932DF315C94B59A286EFA7A368B0A9"
-            {
-            "SourcePath" = "8:..\\Forecast Collector\\obj\\Release\\Forecast Collector.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_9E303595C5E04DE194FC870BD6F30E58"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{993E3A81-315F-4B1B-B001-4B679C1CC1E9}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

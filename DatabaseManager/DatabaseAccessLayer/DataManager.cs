@@ -19,7 +19,7 @@ namespace DatabaseManager
         }
 
 
-        public async Task<bool> CleanAllData(string path)
+        public bool CleanAllData(string path)
         {
             try
             {

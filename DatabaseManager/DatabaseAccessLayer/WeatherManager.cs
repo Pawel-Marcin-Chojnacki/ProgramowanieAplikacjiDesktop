@@ -17,12 +17,12 @@ namespace DatabaseManager
 
         private IDataContext dataContext;
 
-        public async void SaveForecastEntity(ForecastEntity forecast)
+        public async Task<int> SaveForecastEntity(ForecastEntity forecast)
         {
             var queryExists = dataContext.Forecast.Where(x => x.City.ServiceId == forecast.CityServiceId).Where(x => x.Time.Time == forecast.PredictionDate.Time);
             if (queryExists.Count() > 0)
             {
-                return;
+                return 0;
             }
             dataContext.Clouds.Add(forecast.Clouds);
             dataContext.PredictionDate.Add(forecast.PredictionDate);
@@ -39,7 +39,7 @@ namespace DatabaseManager
             forecast.Forecast.CityId = dataContext.City.Where(u => u.ServiceId == forecast.CityServiceId).Single().Id;
             dataContext.Forecast.Add(forecast.Forecast);
 
-            await dataContext.SaveChangesAsync();
+            return await dataContext.SaveChangesAsync();
         }
 
         public ForecastEntity GetForecastEntity(City city, DateTime date)
@@ -81,6 +81,30 @@ namespace DatabaseManager
             }
             cleanDate = cleanDate.AddHours(hour);
             return cleanDate;
+        }
+
+        public List<ForecastEntity> GetForecasts(City city, DateTime startDate, DateTime endDate)
+        {
+            DateTime preciseTimeFrom = GetCLosestForecastTime(startDate);
+            DateTime preciseTimeTo = GetCLosestForecastTime(endDate);
+            var forecast = dataContext.Forecast.Where(f => f.Time.Time >= preciseTimeFrom).Where(f => f.Time.Time <= preciseTimeTo).Where(c => c.City.ServiceId == city.ServiceId);
+            List<ForecastEntity> forecasts = new List<ForecastEntity>();
+            foreach (var item in forecast)
+            {
+                Clouds clouds = item.Clouds;
+                PredictionDate predictionDate = item.Time;
+                WeatherMain weatherMain = item.WeatherMain;
+                Wind wind = item.Wind;
+                ForecastEntity forecastEntity = new ForecastEntity
+                {
+                    Clouds = clouds,
+                    PredictionDate = predictionDate,
+                    WeatherMain = weatherMain,
+                    Wind = wind
+                };
+                forecasts.Add(forecastEntity);
+            }
+            return forecasts;
         }
 
         public ForecastEntity GetForecastBetweenDates(City city, DateTime dateFrom, DateTime dateTo)

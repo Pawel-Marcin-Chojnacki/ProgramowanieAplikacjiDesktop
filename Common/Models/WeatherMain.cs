@@ -8,15 +8,15 @@ namespace Common.Models
 {
     public partial class WeatherMain
     {
-        public float Temperature { get; set; }
+        public double Temperature { get; set; }
 
         public int Pressure { get; set; }
 
         public int Humidity { get; set; }
 
-        public float TemperatureMin { get; set; }
+        public double TemperatureMin { get; set; }
 
-        public float TemperatureMax { get; set; }
+        public double TemperatureMax { get; set; }
 
         [Key, ForeignKey("Forecast")]
         public int Id { get; set; }

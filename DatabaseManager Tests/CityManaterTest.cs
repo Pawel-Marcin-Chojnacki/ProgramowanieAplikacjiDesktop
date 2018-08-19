@@ -5,6 +5,7 @@ using Moq;
 using System;
 using System.Threading.Tasks;
 using Xunit;
+
 namespace DatabaseManager_Tests
 {
     public class CityManaterTest
@@ -15,6 +16,8 @@ namespace DatabaseManager_Tests
             //Arrange
             City city = new City() { ServiceId = 11234, Name = "City", Observed = true };
             var mockedCity = new Mock<IDataContext>();
+            mockedCity.SetupProperty(c => c.City.Add(new City() { ServiceId = 1, Name = "Redneck", Observed = true }));
+
             mockedCity.Setup(x => x.SaveChangesAsync()).ReturnsAsync(1);
             CityManager cityManager = new CityManager(mockedCity.Object);
             //Act
@@ -26,6 +29,7 @@ namespace DatabaseManager_Tests
         [Fact]
         public void RemoveObservedCityShouldDeleteDtabaseEntry()
         {
+            City city = new City() { ServiceId = 11234, Name = "City", Observed = true };
 
         }
 

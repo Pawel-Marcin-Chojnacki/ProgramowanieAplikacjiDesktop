@@ -25,7 +25,7 @@ namespace DatabaseManager
         
         public async Task<int> AddObservedCity(City city)
         {
-            City newCity = dataContext.City.Where(c => c.Name == city.Name).FirstOrDefault();
+            City newCity = dataContext.City.Single(c => c.Name == city.Name);
             if (newCity == null)
             {
                 dataContext.City.Add(city);

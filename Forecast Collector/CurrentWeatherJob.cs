@@ -8,65 +8,136 @@ using DatabaseManager;
 using Common.Models;
 using OpenWeatherMap;
 using OpenWeatherMap.DTO;
+using Common.Logging;
 
 namespace Forecast_Collector
 {
     public class CurrentWeatherJob : IJob
     {
+        private double KelvinToCelciusDifference = 273.15;
+        private EventLogger logger;
+
+        public CurrentWeatherJob()
+        {
+            logger = new EventLogger();
+        }
+
         async Task IJob.Execute(IJobExecutionContext context)
         {
-            CityManager cityManager = new CityManager(new WeatherDataContext());
-            var observedCities = cityManager.GetObservedCities();
-
-            OpenWeaherAPI openWeaher = new OpenWeaherAPI();
-            List<OpenWeatherMap.DTO.Forecast> forecastDTOs = new List<OpenWeatherMap.DTO.Forecast>();
-            foreach (var city in observedCities)
-            {
-                var forecastDTO = await openWeaher.GetForecast(city.ServiceId);
-                forecastDTOs.Add(forecastDTO);
-            }
-
-            WeatherManager weather = new WeatherManager(new WeatherDataContext());
+            List<Common.Models.City> observedCities;
+            List<OpenWeatherMap.DTO.Forecast> forecastDTOs;
             List<ForecastEntity> forecastEntities = new List<ForecastEntity>();
+            WeatherManager weather = new WeatherManager(new WeatherDataContext());
 
-            foreach (var f in forecastDTOs) //each city
+            observedCities = LoadCitiesFromDatabase();
+            forecastDTOs = await LoadDataFromWebservice(observedCities);
+            forecastEntities = ConvertModels(forecastDTOs);
+            await SaveEntities(forecastEntities, weather);
+        }
+
+        private async Task SaveEntities(List<ForecastEntity> forecastEntities, WeatherManager weather)
+        {
+            foreach (var fEntity in forecastEntities)
+            {
+                try
+                {
+                    await weather.SaveForecastEntity(fEntity);
+                }
+                catch (Exception)
+                {
+                    logger.WriteMessage("Failed to save a forecast to dabatabase.");
+                    continue;
+                }
+            }
+        }
+
+        private List<ForecastEntity> ConvertModels(List<OpenWeatherMap.DTO.Forecast> forecastDTOs)
+        {
+            List<ForecastEntity> forecastEntities = new List<ForecastEntity>();
+            foreach (var f in forecastDTOs)
             {
                 var convertedModels = ConvertModel(f);
                 forecastEntities.AddRange(convertedModels);
             }
-
-            foreach (var fEntity in forecastEntities)
-            {
-                weather.SaveForecastEntity(fEntity);
-            }
+            return forecastEntities;
         }
 
-        private List<ForecastEntity> ConvertModel(OpenWeatherMap.DTO.Forecast f)
+        private async Task<List<OpenWeatherMap.DTO.Forecast>> LoadDataFromWebservice(List<Common.Models.City> observedCities)
+        {
+            List<OpenWeatherMap.DTO.Forecast> forecastDTOs = new List<OpenWeatherMap.DTO.Forecast>();
+            OpenWeatherMap.DTO.Forecast forecastDTO;
+            OpenWeaherAPI openWeaher = new OpenWeaherAPI();
+            foreach (var city in observedCities)
+            {
+                try
+                {
+                    forecastDTO = await openWeaher.GetForecast(city.ServiceId);
+                }
+                catch (Exception)
+                {
+                    logger.WriteMessage("Failed to get a forecast from webservice.");
+                    continue;
+                }
+                forecastDTOs.Add(forecastDTO);
+            }
+            return forecastDTOs;
+        }
+
+        private List<Common.Models.City> LoadCitiesFromDatabase()
+        {
+            List<Common.Models.City> observedCities;
+            CityManager cityManager = new CityManager(new WeatherDataContext());
+            try
+            {
+                observedCities = cityManager.GetObservedCities();
+            }
+            catch (Exception exception)
+            {
+                logger.WriteMessage("Failed to retrieve City data. " + exception.Message);
+                throw;
+            }
+
+            return observedCities;
+        }
+
+        /// <summary>
+        /// Converts a DTO object to entity.
+        /// </summary>
+        /// <param name="forecastDTO">Model converted from JSON string.</param>
+        /// <returns>List of forecast entites to store in a database.</returns>
+        public List<ForecastEntity> ConvertModel(OpenWeatherMap.DTO.Forecast forecastDTO)
         {
             List<ForecastEntity> entities = new List<ForecastEntity>();
             ForecastEntity entity = new ForecastEntity();
-            foreach (var weather in f.List)
+            foreach (var weather in forecastDTO.List)
             {
-                entity = new ForecastEntity();
-                
-                entity.CityServiceId = (int)f.City.Id;
+                entity = new ForecastEntity
+                {
+                    CityServiceId = (int)forecastDTO.City.Id,
 
-                entity.Clouds = new Common.Models.Clouds();
+                    Clouds = new Common.Models.Clouds()
+                };
                 entity.Clouds.All = weather.Clouds.All;
 
-                entity.PredictionDate = new PredictionDate();
-                entity.PredictionDate.Time = weather.DtTxt.DateTime;
+                entity.PredictionDate = new PredictionDate
+                {
+                    Time = weather.DtTxt.DateTime
+                };
 
-                entity.WeatherMain = new WeatherMain();
-                entity.WeatherMain.Humidity = (int)weather.Main.Humidity;
-                entity.WeatherMain.Pressure = (int)weather.Main.Pressure;
-                entity.WeatherMain.Temperature = (int)weather.Main.Pressure;
-                entity.WeatherMain.TemperatureMax = (int)weather.Main.TempMax;
-                entity.WeatherMain.TemperatureMin = (int)weather.Main.TempMin;
+                entity.WeatherMain = new WeatherMain
+                {
+                    Humidity = (int)weather.Main.Humidity,
+                    Pressure = (int)weather.Main.Pressure,
+                    Temperature = weather.Main.Temp - KelvinToCelciusDifference,
+                    TemperatureMax = weather.Main.TempMax - KelvinToCelciusDifference,
+                    TemperatureMin = weather.Main.TempMin - KelvinToCelciusDifference
+                };
 
-                entity.Wind = new Common.Models.Wind();
-                entity.Wind.Direction = weather.Wind.Deg;
-                entity.Wind.Speed = weather.Wind.Speed;
+                entity.Wind = new Common.Models.Wind
+                {
+                    Direction = weather.Wind.Deg,
+                    Speed = weather.Wind.Speed
+                };
                 entities.Add(entity);
             }
             return entities;

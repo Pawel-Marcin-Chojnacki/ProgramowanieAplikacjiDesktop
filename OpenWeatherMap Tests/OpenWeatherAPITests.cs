@@ -1,6 +1,8 @@
 ﻿using System;
 using Xunit;
 using OpenWeatherMap;
+using OpenWeatherMap.DTO;
+using Moq;
 
 namespace OpenWeatherMap_Tests
 {
@@ -23,22 +25,36 @@ namespace OpenWeatherMap_Tests
             Assert.Equal(currentKey, key);
         }
 
-        //[Theory]
-        //public void GetWeatherShouldReturnJSON()
-        //{
-        //    //Arrange
-        //    //Act
-        //    //Assert
-        //}
+        [Theory]
+        [InlineData(12345)]
+        public void GetWeatherShouldReturnJSON(int id)
+        {
+            //Arrange
+            OpenWeaherAPI weaherAPI = new OpenWeaherAPI();
 
-        //[Theory]
-        //public void GetAPIKeyShouldReturnCorrectKey()
-        //{
-        //    //Arrange
+            //Act
+            var forecast = weaherAPI.GetForecast(id).Result;
+            //Assert
 
-        //    //Act
+            Forecast expectedResult = new Forecast()
+            {
 
-        //    //Assert
-        //}
+                // City = new City() { Id = id },List 
+            };
+            Assert.Equal(expectedResult, forecast);
+        }
+
+        [Fact]
+        public void GetAPIKeyShouldReturnCorrectKey()
+        {
+            //Arrange
+            OpenWeaherAPI api = new OpenWeaherAPI();
+            //Act
+            string currentKey = api.GetAPIKey();
+            //Assert
+            Assert.NotNull(currentKey);
+        }
+
+        private string jsonResponse = "{ \"cod\":\"200\", \"message\":0.0154, \"cnt\":40, \"list\":[{\"dt\":1534777200,\"main\":{\"temp\":299.656,\"temp_min\":299.656,\"temp_max\":299.656,\"pressure\":1020.01,\"sea_level\":1030.14,\"grnd_level\":1020.01,\"humidity\":53,\"temp_kf\":0},\"weather\":[{\"id\":802,\"main\":\"Clouds\",\"description\":\"scattered clouds\",\"icon\":\"03d\"}],\"clouds\":{\"all\":44},\"wind\":{\"speed\":5.05,\"deg\":289.003},\"rain\":{},\"sys\":{\"pod\":\"d\"},\"dt_txt\":\"2018-08-20 15:00:00\"}],\"city\":{\"id\":3083271,\"name\":\"Torun\",\"coord\":{\"lat\":53.0137,\"lon\":18.5981},\"country\":\"PL\"}}";
     }
 }
