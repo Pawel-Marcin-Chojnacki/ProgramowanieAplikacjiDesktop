@@ -6,16 +6,19 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Logging;
 
 namespace DatabaseManager
 {
     public class DataManager
     {
-        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private readonly IFileSystem fileSystem;
+        private EventLogger logger;
+
         public DataManager(IFileSystem fileSystem)
         {
             this.fileSystem = fileSystem;
+            logger = new EventLogger();
         }
 
         public DataManager() : this( fileSystem: new FileSystem())
@@ -30,7 +33,7 @@ namespace DatabaseManager
             }
             catch (Exception exception)
             {
-                //TODO: Log to Windows Events.
+                logger.WriteMessage("Failed to get a forecast from webservice.\n" + exception.Message);
                 return false;
             }
             return true;
