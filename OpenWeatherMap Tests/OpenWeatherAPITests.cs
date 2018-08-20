@@ -25,25 +25,7 @@ namespace OpenWeatherMap_Tests
             Assert.Equal(currentKey, key);
         }
 
-        [Theory]
-        [InlineData(12345)]
-        public void GetWeatherShouldReturnJSON(int id)
-        {
-            //Arrange
-            OpenWeaherAPI weaherAPI = new OpenWeaherAPI();
-
-            //Act
-            var forecast = weaherAPI.GetForecast(id).Result;
-            //Assert
-
-            Forecast expectedResult = new Forecast()
-            {
-
-                // City = new City() { Id = id },List 
-            };
-            Assert.Equal(expectedResult, forecast);
-        }
-
+       
         [Fact]
         public void GetAPIKeyShouldReturnCorrectKey()
         {
