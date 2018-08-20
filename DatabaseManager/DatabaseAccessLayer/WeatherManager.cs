@@ -19,7 +19,8 @@ namespace DatabaseManager
 
         public async Task<int> SaveForecastEntity(ForecastEntity forecast)
         {
-            if(!QueryExists(forecast).Any())
+            var queryExists = dataContext.Forecast.Where(x => x.City.ServiceId == forecast.CityServiceId).Where(x => x.Time.Time == forecast.PredictionDate.Time);
+            if (queryExists.Count() != 0)
             {
                 return 0;
             }
@@ -45,10 +46,6 @@ namespace DatabaseManager
             return await dataContext.SaveChangesAsync();
         }
 
-        private IQueryable<Forecast> QueryExists(ForecastEntity forecast)
-        {
-            return dataContext.Forecast.Where(x => x.City.ServiceId == forecast.CityServiceId).Where(x => x.Time.Time == forecast.PredictionDate.Time);
-        }
 
         public ForecastEntity GetForecastEntity(City city, DateTime date)
         {
