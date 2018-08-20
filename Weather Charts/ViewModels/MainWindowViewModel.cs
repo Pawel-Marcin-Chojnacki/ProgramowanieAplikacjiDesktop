@@ -19,7 +19,7 @@ namespace Weather_Charts.ViewModels
         private List<string> cityList;
         private string selectedCity;
         private ServiceManager service;
-        private string serviceName = "ForecastCollector";
+        private string serviceName = "Forecast Collector";
         private List<City> observedCities;
         public City currentCity;
         private DataManager data;
