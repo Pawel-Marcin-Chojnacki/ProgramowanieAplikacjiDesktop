@@ -9,6 +9,8 @@ using Common.Models;
 using OpenWeatherMap;
 using OpenWeatherMap.DTO;
 using Common.Logging;
+using City = Common.Models.City;
+using Forecast = OpenWeatherMap.DTO.Forecast;
 
 namespace Forecast_Collector
 {
@@ -24,18 +26,16 @@ namespace Forecast_Collector
 
         async Task IJob.Execute(IJobExecutionContext context)
         {
-            List<Common.Models.City> observedCities;
-            List<OpenWeatherMap.DTO.Forecast> forecastDTOs;
             List<ForecastEntity> forecastEntities = new List<ForecastEntity>();
             WeatherManager weather = new WeatherManager(new WeatherDataContext());
 
-            observedCities = LoadCitiesFromDatabase();
-            forecastDTOs = await LoadDataFromWebservice(observedCities);
+            var observedCities = LoadCitiesFromDatabase();
+            var forecastDTOs = await LoadDataFromWebservice(observedCities);
             forecastEntities = ConvertModels(forecastDTOs);
             await SaveEntities(forecastEntities, weather);
         }
 
-        private async Task SaveEntities(List<ForecastEntity> forecastEntities, WeatherManager weather)
+        private async Task SaveEntities(IEnumerable<ForecastEntity> forecastEntities, WeatherManager weather)
         {
             foreach (var fEntity in forecastEntities)
             {
@@ -46,12 +46,11 @@ namespace Forecast_Collector
                 catch (Exception)
                 {
                     logger.WriteMessage("Failed to save a forecast to dabatabase.");
-                    continue;
                 }
             }
         }
 
-        private List<ForecastEntity> ConvertModels(List<OpenWeatherMap.DTO.Forecast> forecastDTOs)
+        public List<ForecastEntity> ConvertModels(List<Forecast> forecastDTOs)
         {
             List<ForecastEntity> forecastEntities = new List<ForecastEntity>();
             foreach (var f in forecastDTOs)
@@ -62,10 +61,10 @@ namespace Forecast_Collector
             return forecastEntities;
         }
 
-        private async Task<List<OpenWeatherMap.DTO.Forecast>> LoadDataFromWebservice(List<Common.Models.City> observedCities)
+        private async Task<List<Forecast>> LoadDataFromWebservice(List<City> observedCities)
         {
-            List<OpenWeatherMap.DTO.Forecast> forecastDTOs = new List<OpenWeatherMap.DTO.Forecast>();
-            OpenWeatherMap.DTO.Forecast forecastDTO;
+            List<Forecast> forecastDTOs = new List<Forecast>();
+            Forecast forecastDTO;
             OpenWeaherAPI openWeaher = new OpenWeaherAPI();
             foreach (var city in observedCities)
             {
@@ -83,9 +82,9 @@ namespace Forecast_Collector
             return forecastDTOs;
         }
 
-        private List<Common.Models.City> LoadCitiesFromDatabase()
+        private List<City> LoadCitiesFromDatabase()
         {
-            List<Common.Models.City> observedCities;
+            List<City> observedCities;
             CityManager cityManager = new CityManager(new WeatherDataContext());
             try
             {
@@ -105,7 +104,7 @@ namespace Forecast_Collector
         /// </summary>
         /// <param name="forecastDTO">Model converted from JSON string.</param>
         /// <returns>List of forecast entites to store in a database.</returns>
-        public List<ForecastEntity> ConvertModel(OpenWeatherMap.DTO.Forecast forecastDTO)
+        public List<ForecastEntity> ConvertModel(Forecast forecastDTO)
         {
             List<ForecastEntity> entities = new List<ForecastEntity>();
             ForecastEntity entity = new ForecastEntity();

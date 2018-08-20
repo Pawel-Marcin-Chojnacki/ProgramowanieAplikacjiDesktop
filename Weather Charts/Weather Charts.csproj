@@ -86,7 +86,8 @@
     <Compile Include="BasicLineChart.xaml.cs">
       <DependentUpon>BasicLineChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MultiTempModel.cs" />
+    <Compile Include="Logging\FileLogger.cs" />
+    <Compile Include="Logging\IFileLogger.cs" />
     <Compile Include="SolidChart.xaml.cs">
       <DependentUpon>SolidChart.xaml</DependentUpon>
     </Compile>

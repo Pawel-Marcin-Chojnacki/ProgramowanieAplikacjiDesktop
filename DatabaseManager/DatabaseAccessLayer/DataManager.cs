@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,19 +12,21 @@ namespace DatabaseManager
     public class DataManager
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        private IDataContext dataContext;
-
-        public DataManager(IDataContext context)
+        private readonly IFileSystem fileSystem;
+        public DataManager(IFileSystem fileSystem)
         {
-            dataContext = context;
+            this.fileSystem = fileSystem;
         }
 
+        public DataManager() : this( fileSystem: new FileSystem())
+        {
+        }
 
         public bool CleanAllData(string path)
         {
             try
             {
-                File.Delete(path);
+                fileSystem.File.Delete(path);
             }
             catch (Exception exception)
             {

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Weather_Charts.Logging;
 using Weather_Charts.ViewModels;
 
 namespace Weather_Charts
@@ -25,7 +26,7 @@ namespace Weather_Charts
         private TemperatureViewModel viewModel;
         public Temperature(City selectedCity)
         {
-            viewModel = new TemperatureViewModel(selectedCity);
+            viewModel = new TemperatureViewModel(selectedCity, new FileLogger());
             InitializeComponent();
             DataContext = viewModel;
         }

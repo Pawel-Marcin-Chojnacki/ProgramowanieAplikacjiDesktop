@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using DatabaseManager;
 using Common.Models;
+using Weather_Charts.Logging;
 
 namespace Weather_Charts.ViewModels
 {
@@ -22,6 +23,7 @@ namespace Weather_Charts.ViewModels
         private List<City> observedCities;
         public City currentCity;
         private DataManager data;
+        private IFileLogger _log;
 
         /// <summary>
         /// Provides a list of cities selction.
@@ -59,13 +61,13 @@ namespace Weather_Charts.ViewModels
         /// <summary>
         /// Initializes data.
         /// </summary>
-        public MainWindowViewModel()
+        public MainWindowViewModel(IFileLogger log)
         {
+            _log = log;
             currentCity = new City();
             CityList = GetCityListFromDatabase();
-            service = new ServiceManager(serviceName);
-            data = new DataManager(new WeatherDataContext());
-
+            service = new ServiceManager(serviceName, _log);
+            data = new DataManager();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -79,6 +81,10 @@ namespace Weather_Charts.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets list of names for observed cities.
+        /// </summary>
+        /// <returns>Names of observed cities.</returns>
         public List<string> GetCityListFromDatabase()
         {
             CityManager cityManager = new CityManager(new WeatherDataContext());
@@ -87,46 +93,30 @@ namespace Weather_Charts.ViewModels
             return cityNames;
         }
 
-        public async void StopService()
+        /// <summary>
+        /// Invokes request to stop service.
+        /// </summary>
+        public void StopService()
         {
-            bool success = await service.StopService();
-            if (success)
-            {
-                
-            }
-            else
-            {
-
-            }
+            service.StopService();
         }
 
-        public async void StartService()
+        /// <summary>
+        /// Invokes request to start service.
+        /// </summary>
+        public void StartService()
         {
-            bool success = await service.StopService();
-            if (success)
-            {
-
-            }
-            else
-            {
-
-            }
+            service.StartService();
         }
 
+        /// <summary>
+        /// Deletes database file.
+        /// </summary>
         public void CleanDatabase()
         {
-            //Pobierz ścieżkę z app.config
             string dbPath = ConfigurationManager.ConnectionStrings["WeatherDataContext"].ConnectionString;
             dbPath = dbPath.Substring(12);
-            bool success = data.CleanAllData(dbPath);
-            if (success)
-            {
-                // Db deleted
-            }
-            else
-            {
-                // File is currently used.
-            }
+            data.CleanAllData(dbPath);
         }
     }
 }

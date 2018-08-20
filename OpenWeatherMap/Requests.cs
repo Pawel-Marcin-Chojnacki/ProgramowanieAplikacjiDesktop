@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace OpenWeatherMap
@@ -30,9 +31,9 @@ namespace OpenWeatherMap
             return resultContent;
         }
 
-        private string Get5DaysWeatherRequestURL(int cityId)
+        public string Get5DaysWeatherRequestURL(int cityId)
         {
-            string url = Forecast5DayAPI + cityId.ToString() + "&APPID=" + Credentials.ApiKey;
+            string url = Forecast5DayAPI + cityId + "&APPID=" + Credentials.ApiKey;
             return url;
         }
     }

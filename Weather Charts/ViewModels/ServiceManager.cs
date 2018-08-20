@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using Weather_Charts.Logging;
 
 namespace Weather_Charts
 {
@@ -11,8 +12,10 @@ namespace Weather_Charts
     {
         private ServiceController controller;
 
-        public ServiceManager(string serviceName)
+        private IFileLogger _log;
+        public ServiceManager(string serviceName, IFileLogger logger)
         {
+            _log = logger;
             controller = new ServiceController();
             controller.ServiceName = serviceName;
         }
@@ -25,41 +28,48 @@ namespace Weather_Charts
                 {
                     controller.Start();
                     controller.WaitForStatus(ServiceControllerStatus.Running);
-                    return true; // Log service started
+                    _log.WriteToFile("Service has been started.");
+                    return true;
                 }
                 catch(InvalidOperationException)
                 {
-                    return false; //Log Service exception
+                    _log.WriteToFile("Service hasn't been started. Exception occured.");
+                    return false;
                 }
             }
-            else if (controller.Status == ServiceControllerStatus.Running)
+            if (controller.Status == ServiceControllerStatus.Running)
             {
-                return true; // Log service was already running.
+                _log.WriteToFile("Service has been already running.");
+                return true;
             }
-            return false; //what happnd?
+            return false;
         }
 
-        public async Task<bool> StopService()
+        public bool StopService()
         {
             if (controller.Status != ServiceControllerStatus.Stopped)
             {
                 try
                 {
-                    controller.Stop();
+                    controller.Stop();  
                     controller.WaitForStatus(ServiceControllerStatus.Stopped);
-                    return true; // Log service stopped
+                    _log.WriteToFile("Service has been stopped.");
+
+                    return true; 
                 }
                 catch (InvalidOperationException)
                 {
-                    return false; //Log Service exception
+                    _log.WriteToFile("Service hasn't been stopped. Exception occured.");
+                    return false;
                 }
             }
             else if (controller.Status == ServiceControllerStatus.Stopped)
             {
-                return true; // Log service was already stopped.
+                _log.WriteToFile("Service has been already stopped.");
+                return true;
             }
 
-            return false; //What happnd?
+            return false;
         }
     }
 }

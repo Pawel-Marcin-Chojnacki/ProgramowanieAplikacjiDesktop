@@ -11,7 +11,7 @@ namespace OpenWeatherMap
         /// <summary>
         /// Gets weather for a given city.
         /// </summary>
-        /// <param name="city">Preselected city name. Must exist in database mappings.</param>
+        /// <param name="cityId">Preselected city name. Must exist in database mappings.</param>
         public async Task<Forecast> GetForecast(int cityId)
         {
             Requests weatherRequest = new Requests();

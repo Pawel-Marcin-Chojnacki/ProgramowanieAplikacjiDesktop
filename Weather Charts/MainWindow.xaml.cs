@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Weather_Charts.Logging;
 using Weather_Charts.ViewModels;
 
 namespace Weather_Charts
@@ -14,7 +15,7 @@ namespace Weather_Charts
         private MainWindowViewModel viewModel;
         public MainWindow()
         {
-            viewModel = new MainWindowViewModel();
+            viewModel = new MainWindowViewModel(new FileLogger());
             InitializeComponent();
             DataContext = viewModel;
         }

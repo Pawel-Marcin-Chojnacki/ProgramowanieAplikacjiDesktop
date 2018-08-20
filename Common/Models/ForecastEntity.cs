@@ -6,14 +6,6 @@ namespace Common.Models
 {
     public class ForecastEntity
     {
-        //ForecastEntity()
-        //{
-        //    WeatherMain = new WeatherMain();
-        //    Wind = new Wind();
-        //    Clouds = new Clouds();
-        //    PredictionDate = new PredictionDate();
-        //    Forecast = new Forecast();
-        //}
 
         public int CityServiceId { get; set; }
 

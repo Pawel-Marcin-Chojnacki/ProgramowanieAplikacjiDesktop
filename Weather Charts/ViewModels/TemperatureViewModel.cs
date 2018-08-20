@@ -7,29 +7,30 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Weather_Charts.Logging;
 
 namespace Weather_Charts.ViewModels
 {
     public class TemperatureViewModel : INotifyPropertyChanged
     {
-        public TemperatureViewModel(City selectedCity)
+        private IFileLogger _log;
+        public TemperatureViewModel(City selectedCity, IFileLogger logger)
         {
+            _log = logger;
             InitializeData(selectedCity);
         }
 
         private void InitializeData(City selectedCity)
         {
             CityName = selectedCity.Name;
-            City city = selectedCity;
-            DateTime fiveDaysLater = new DateTime();
-            DateTime now = new DateTime();
-            now = fiveDaysLater = DateTime.Now;
+            DateTime fiveDaysLater;
+            var now = fiveDaysLater = DateTime.Now;
             fiveDaysLater = fiveDaysLater.AddDays(5);
             WeatherManager weatherManager = new WeatherManager(new WeatherDataContext());
             forecast = weatherManager.GetForecasts(selectedCity, now, fiveDaysLater);
             ModelsService modelsService = new ModelsService();
-            ChartValues = modelsService.TemperaturesToChart(forecast);
-            Dates = modelsService.DatesToArray(forecast).ToArray();
+            ChartValues = modelsService.TemperaturesToChart(forecast, 4);
+            Dates = modelsService.DatesToArray(forecast, 4).ToArray();
         }
 
 

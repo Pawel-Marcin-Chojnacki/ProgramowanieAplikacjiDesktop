@@ -243,14 +243,50 @@ namespace OpenWeatherMap.DTO
                 case Icon.The02D:
                     serializer.Serialize(writer, "02d");
                     return;
+                case Icon.The02N:
+                    serializer.Serialize(writer, "02n");
+                    return;
                 case Icon.The03D:
                     serializer.Serialize(writer, "03d");
+                    return;
+                case Icon.The03N:
+                    serializer.Serialize(writer, "03n");
                     return;
                 case Icon.The04D:
                     serializer.Serialize(writer, "04d");
                     return;
+                case Icon.The04N:
+                    serializer.Serialize(writer, "04n");
+                    return;
+                case Icon.The09D:
+                    serializer.Serialize(writer, "09d");
+                    return;
+                case Icon.The09N:
+                    serializer.Serialize(writer, "09n");
+                    return;
+                case Icon.The10D:
+                    serializer.Serialize(writer, "10d");
+                    return;
                 case Icon.The10N:
                     serializer.Serialize(writer, "10n");
+                    return;
+                case Icon.The11D:
+                    serializer.Serialize(writer, "11d");
+                    return;
+                case Icon.The11N:
+                    serializer.Serialize(writer, "11n");
+                    return;
+                case Icon.The13D:
+                    serializer.Serialize(writer, "13d");
+                    return;
+                case Icon.The13N:
+                    serializer.Serialize(writer, "13n");
+                    return;
+                case Icon.The50D:
+                    serializer.Serialize(writer, "50d");
+                    return;
+                case Icon.The50N:
+                    serializer.Serialize(writer, "50n");
                     return;
             }
             throw new Exception("Cannot marshal type Icon");

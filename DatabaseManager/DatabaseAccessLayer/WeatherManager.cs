@@ -19,8 +19,7 @@ namespace DatabaseManager
 
         public async Task<int> SaveForecastEntity(ForecastEntity forecast)
         {
-            var queryExists = dataContext.Forecast.Where(x => x.City.ServiceId == forecast.CityServiceId).Where(x => x.Time.Time == forecast.PredictionDate.Time);
-            if (queryExists.Count() > 0)
+            if(!QueryExists(forecast).Any())
             {
                 return 0;
             }
@@ -28,18 +27,27 @@ namespace DatabaseManager
             dataContext.PredictionDate.Add(forecast.PredictionDate);
             dataContext.WeatherMain.Add(forecast.WeatherMain);
             dataContext.Wind.Add(forecast.Wind);
+
             if(forecast.Forecast == null)
             {
-                forecast.Forecast = new Forecast();
-                forecast.Forecast.Clouds = forecast.Clouds;
-                forecast.Forecast.Time = forecast.PredictionDate;
-                forecast.Forecast.WeatherMain = forecast.WeatherMain;
-                forecast.Forecast.Wind = forecast.Wind;
+                forecast.Forecast = new Forecast
+                {
+                    Clouds = forecast.Clouds,
+                    Time = forecast.PredictionDate,
+                    WeatherMain = forecast.WeatherMain,
+                    Wind = forecast.Wind
+                };
             }
-            forecast.Forecast.CityId = dataContext.City.Where(u => u.ServiceId == forecast.CityServiceId).Single().Id;
+
+            forecast.Forecast.CityId = dataContext.City.Single(u => u.ServiceId == forecast.CityServiceId).Id;
             dataContext.Forecast.Add(forecast.Forecast);
 
             return await dataContext.SaveChangesAsync();
+        }
+
+        private IQueryable<Forecast> QueryExists(ForecastEntity forecast)
+        {
+            return dataContext.Forecast.Where(x => x.City.ServiceId == forecast.CityServiceId).Where(x => x.Time.Time == forecast.PredictionDate.Time);
         }
 
         public ForecastEntity GetForecastEntity(City city, DateTime date)
@@ -76,18 +84,28 @@ namespace DatabaseManager
                 case 2:
                     hour = date.Hour - 2;
                     break;
-                default:
-                    break;
             }
             cleanDate = cleanDate.AddHours(hour);
             return cleanDate;
         }
 
+        /// <summary>
+        /// Gets list of forecasts for a city between given dates.
+        /// </summary>
+        /// <param name="city">Location for which forecast is taken</param>
+        /// <param name="startDate">Starting weather range.</param>
+        /// <param name="endDate">Ending weather range/</param>
+        /// <returns>List of entites in DTO model format.</returns>
         public List<ForecastEntity> GetForecasts(City city, DateTime startDate, DateTime endDate)
         {
             DateTime preciseTimeFrom = GetCLosestForecastTime(startDate);
             DateTime preciseTimeTo = GetCLosestForecastTime(endDate);
             var forecast = dataContext.Forecast.Where(f => f.Time.Time >= preciseTimeFrom).Where(f => f.Time.Time <= preciseTimeTo).Where(c => c.City.ServiceId == city.ServiceId);
+            return ConvertEntities(forecast);
+        }
+
+        private List<ForecastEntity> ConvertEntities(IQueryable<Forecast> forecast)
+        {
             List<ForecastEntity> forecasts = new List<ForecastEntity>();
             foreach (var item in forecast)
             {
@@ -104,6 +122,7 @@ namespace DatabaseManager
                 };
                 forecasts.Add(forecastEntity);
             }
+
             return forecasts;
         }
 
@@ -112,6 +131,11 @@ namespace DatabaseManager
             DateTime preciseTimeFrom = GetCLosestForecastTime(dateFrom);
             DateTime preciseTimeTo = GetCLosestForecastTime(dateTo);
             var forecast = dataContext.Forecast.Where(f => f.Time.Time >= preciseTimeFrom).Where(f => f.Time.Time <= preciseTimeTo).Where(c => c.City.ServiceId == city.ServiceId).First();
+            return ConvertEntity(forecast);
+        }
+
+        public ForecastEntity ConvertEntity(Forecast forecast)
+        {
             Clouds clouds = forecast.Clouds;
             PredictionDate predictionDate = forecast.Time;
             WeatherMain weatherMain = forecast.WeatherMain;
@@ -125,24 +149,13 @@ namespace DatabaseManager
             };
             return forecastEntity;
         }
-        
+
         public ForecastEntity GetLatestForecast(City city)
         {
             var datesForCity = dataContext.Forecast.Where(c => c.City.ServiceId == city.ServiceId);
             var maxDateTime = datesForCity.Max(d => d.Time.Time);
-            var forecast = datesForCity.Where(d => d.Time.Time == maxDateTime).First();
-            Clouds clouds = forecast.Clouds;
-            PredictionDate predictionDate = forecast.Time;
-            WeatherMain weatherMain = forecast.WeatherMain;
-            Wind wind = forecast.Wind;
-            ForecastEntity forecastEntity = new ForecastEntity
-            {
-                Clouds = clouds,
-                PredictionDate = predictionDate,
-                WeatherMain = weatherMain,
-                Wind = wind
-            };
-            return forecastEntity;
+            var forecast = datesForCity.First(d => d.Time.Time == maxDateTime);
+            return ConvertEntity(forecast);
         }
     }
 }
