@@ -41,7 +41,7 @@ namespace Weather_Charts.ViewModels
             forecast = weatherManager.GetForecasts(selectedCity, now,  fiveDaysLater);
             ModelsService modelsService = new ModelsService();
             ChartValues = modelsService.PressureToChart(forecast, 4);
-            DateRange = DateTime.Now.AddDays(5).ToString() + " - " + DateTime.Now.ToString();
+            DateRange = DateTime.Now + " - " + DateTime.Now.AddDays(5);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -26,6 +26,8 @@ namespace Forecast_Collector
 
         async Task IJob.Execute(IJobExecutionContext context)
         {
+            logger.WriteMessage("Starting new job execution.");
+
             List<ForecastEntity> forecastEntities = new List<ForecastEntity>();
             WeatherManager weather = new WeatherManager(new WeatherDataContext());
 

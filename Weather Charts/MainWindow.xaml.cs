@@ -52,5 +52,14 @@ namespace Weather_Charts
             Pressure chart = new Pressure(viewModel.currentCity);
             chart.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddCity addCity = new AddCity();
+            addCity.ShowDialog();
+            
+                viewModel.CityList = viewModel.GetCityListFromDatabase();
+            
+        }
     }
 }

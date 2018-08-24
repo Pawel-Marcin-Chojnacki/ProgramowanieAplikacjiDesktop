@@ -106,7 +106,8 @@ namespace Forecast_Collector
                     .WithIdentity("updateDataTrigger", "mainGroup")
                     .StartNow()
                     .WithSimpleSchedule(x => x
-                        .WithIntervalInMinutes(10))
+                        .WithIntervalInMinutes(10)
+                    .RepeatForever())
                     .Build();
 
                 await scheduler.ScheduleJob(job, trigger);

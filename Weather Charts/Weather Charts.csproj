@@ -80,6 +80,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddCity.xaml.cs">
+      <DependentUpon>AddCity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BasicColumn.xaml.cs">
       <DependentUpon>BasicColumn.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
     <Compile Include="ViewModels\MultiTemperatureViewModel.cs" />
     <Compile Include="ViewModels\PressureViewModel.cs" />
     <Compile Include="ViewModels\TemperatureViewModel.cs" />
+    <Page Include="AddCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BasicColumn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

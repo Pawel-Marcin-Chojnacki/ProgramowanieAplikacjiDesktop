@@ -29,7 +29,7 @@ namespace Forecast_Collector
         {
             using (var sc = new ServiceController(serviceInstaller1.ServiceName))
             {
-                sc.Start();
+                sc.Stop();
             }
         }
 

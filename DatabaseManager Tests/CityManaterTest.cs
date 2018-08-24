@@ -16,7 +16,7 @@ namespace DatabaseManager_Tests
             //Arrange
             City city = new City() { ServiceId = 11234, Name = "City", Observed = true };
             var mockedCity = new Mock<IDataContext>();
-            mockedCity.SetupProperty(c => c.City.Add(new City() { ServiceId = 1, Name = "Redneck", Observed = true }));
+            mockedCity.SetupProperty(c => c.City.Add(new City() { ServiceId = 1, Name = "Olsztyn", Observed = true }));
 
             mockedCity.Setup(x => x.SaveChangesAsync()).ReturnsAsync(1);
             CityManager cityManager = new CityManager(mockedCity.Object);
@@ -25,20 +25,6 @@ namespace DatabaseManager_Tests
             //Assert
             Assert.Equal(1, result);
         }
-
-        [Fact]
-        public void RemoveObservedCityShouldDeleteDtabaseEntry()
-        {
-            City city = new City() { ServiceId = 11234, Name = "City", Observed = true };
-
-        }
-
-        [Fact]
-        public void GetObservedCitiesShouldReturnListOfAllEntriesFromCityTable()
-        {
-
-        }
-        
 
     }
 }

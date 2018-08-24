@@ -14,7 +14,8 @@
         <TextBlock HorizontalAlignment="Left" FontSize="16" Margin="174,10,0,0" TextWrapping="Wrap" Text="Pick a city:" VerticalAlignment="Top" Width="125" Height="24"/>
         <Button Content="Pressure" Name="ShowPressure" FontSize="16" HorizontalAlignment="Left" Margin="299,41,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowPressure_Click"/>
         <Button Content="Temperature" Name="ShowTemperature" FontSize="16" HorizontalAlignment="Left" Margin="299,90,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowTemperature_Click"/> 
-        <Button Content="Multiple locations" Name="ShowMultiTemperature" FontSize="16" HorizontalAlignment="Left" Margin="299,140,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowMultiTemperature_Click"/> 
+        <Button Content="Multiple locations" Name="ShowMultiTemperature" FontSize="16" HorizontalAlignment="Left" Margin="299,140,0,0" VerticalAlignment="Top" Width="163" Height="35" Click="ShowMultiTemperature_Click"/>
+        <Button Content="Add City" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Width="139" Height="52" Click="Button_Click"/>
         <!--<Button IsEnabled="False" Content="Manage cities" FontSize="16" x:Name="ManageCitiesList" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click" Height="30"/>-->
 
     </Grid>

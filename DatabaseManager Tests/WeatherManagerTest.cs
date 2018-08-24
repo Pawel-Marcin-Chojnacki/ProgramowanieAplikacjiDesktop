@@ -89,23 +89,6 @@ namespace DatabaseManager_Tests
             Assert.Equal(1, savedEntities);
             weatherContextMock.Verify(x => x.SaveChangesAsync(), Times.Never);
         }
-
-        [Fact]
-        public void GetForecastEntityShouldReturnForecastObject()
-        {
-
-        }
-
-        [Fact]
-        public void GetForecastBetweenDatesShouldReturnCityForecastObjectForSpecificDate()
-        {
-
-        }
-
-        [Fact]
-        public void GetLatestForecastShouldReturnObjectWithLis3tOfForecasts()
-        {
-
-        }
+        
     }
 }
